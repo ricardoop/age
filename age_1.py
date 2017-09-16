@@ -1,10 +1,23 @@
 import time
 import datetime
 def age():
-    brithday_date = raw_input('please inter brithday yyyy-mm-dd:')
-    t = time.strptime(brithday_date, "%Y-%m-%d")
-    y,m,d = t[0:3]
-    now_day = datetime.datetime(y,m,d)
+    def isValidDate(self,date):
+        brithday_date = raw_input('please inter brithday yyyy-mm-dd:')
+        try:
+            while True:
+                 t = time.strptime(brithday_date, "%Y-%m-%d")
+                 y, m, d = t[0:3]
+                 now_day = datetime.datetime(y, m, d)
+        except:
+            print "you inter wrong date"
+
+
+
+
+    check_time = raw_input('inter check date yyyy-mm-dd:')
+    ct = time.strptime(check_time, "%Y-%m-%d")
+    cy, cm, cd = ct[0:3]
+    check_day = datetime.datetime(cy,cm,cd)
     a=time.gmtime()
     dd=a[2]-d
     dm=a[1]-m
@@ -21,7 +34,7 @@ def age():
         dm=dm+12
         dy=dy-1
     print dy,dm,dd
-    diff_day = (datetime.datetime.now() - now_day).days
+    diff_day = (check_day - now_day).days
     print  diff_day
 
     if diff_day<=14:
@@ -53,16 +66,3 @@ def age():
         print datetime.datetime.now() + datetime.timedelta(days=das)
 
 age()
-'''
-check_time = raw_input('inter check date yyyy-mm-dd:')
-ct = time.strptime(check_time, "%Y-%m-%d")
-cy, cm, cd = ct[0:3]
-
-else:
-d1 = datetime.datetime(cy, cm, cd) + datetime.timedelta(months=2)
-print d1
-
-    if dy==0 and dm==0 and dd<=14:
-        d1 = now_day + datetime.timedelta(days=17)
-        print d1
-'''
